@@ -10,22 +10,7 @@ import XCTest
 
 // Naming Structure: test_UnitOfWork_StateUnderTest_ExpectedBehavior
 // Naming Structure: test_[struct_or_class]_[variable_or_function]_[expected_result]
-/*
- Two best practices for unit testing:
- Make the variable lazy private lazy var viewModel = LoginViewModel()
- Make the variable optional and set it to nil in tearDownWithError()
- private lazy var viewModel: LoginViewModel! = LoginViewModel()
-
- override func tearDownWithError() throws {
-     super.tearDownWithError()
-     viewModel = nil
- }
- The reason for this is an implementation detail of XCTest which is not obvious. For each test method, a new instance of LoginViewModel_Tests will be created right before the first test starts. That applies to all tests, not just the ones in this file. Meaning for each test method in your entire project, you end up having an instance of the class it is contained in in a big list [XCTestCase]. XCTest will then iterate through the list and run each test.
- This has two implications:
- All objects contained within the test class are also instantiated when the class itself is instantiated, unless they are lazy. Lazy defers their initialization to the point of their first use.
- Since the XCTestCase objects are kept in a big array and not removed from the array after being completed, they stay in memory. And so do the objects that they keep within them. This may sometimes lead to unintended side effects. That is, we set them to nil in the tearDown methods so they get deallocated and cannot do any harm.
-
- */
+ 
 
 final class LoginViewModel_Tests: XCTestCase {
     // Given
